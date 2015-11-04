@@ -15,13 +15,13 @@
   # install ansible
   apt-get install -y ansible
 
-  # get ansible ansible repo
-  wget -O- https://github.com/RefugeesOnRails/machina/archive/master.tar.gz | tar xz -C /tmp
-
-  # go into machina dir
-  cd /tmp/machina-master
-
-  # install playbook with ansible
-  ansible-playbook -i "localhost," -c local site.yml
 SCRIPT
+# get ansible ansible repo
+wget -O- https://github.com/RefugeesOnRails/machina/archive/master.tar.gz | tar xz -C /tmp
+
+# go into machina dir
+cd /tmp/machina-master
+
+# install playbook with ansible
+ansible-playbook -i "localhost," -c local site.yml --ask-sudo-pass
 }
