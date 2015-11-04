@@ -10,6 +10,9 @@
     - git
     - postgresql
     - redis-server
+    - python-dev
+    - python-setuptools
+    - python-virtualenv
 
 # Update all packages to the latest version
 - name: Update all Packages
@@ -19,10 +22,7 @@
   apt_key: url=https://toolbelt.heroku.com/apt/release.key state=present
 
 - name: add heroku toolbelt repo
-  apt_repository:
-    repo="deb http://toolbelt.heroku.com/ubuntu ./"
-    state=present
-    update_cache=yes
+  apt_repository: repo="deb http://toolbelt.heroku.com/ubuntu ./" state=present update_cache=yes
 
 - name: install heroku toolbelt
   apt: name=heroku-toolbelt state=present
@@ -32,3 +32,18 @@
     repo=https://github.com/sstephenson/rbenv.git
     dest=~/.rbenv
   sudo: false
+
+- name: add google chrome key
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+- name: add google chrome repo
+  apt_repository: repo="deb http://dl.google.com/linux/chrome/deb/ stable main" state=present update_cache=yes
+
+- name: install google chrome
+  apt: name=google-chrome-stable state=installed
+
+- name: install pip
+  easy_install: name=pip
+
+- name: install awscli
+  pip: name=awscli
