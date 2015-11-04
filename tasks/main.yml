@@ -1,11 +1,16 @@
 ---
 # tasks file for machina
 
-- name: set USER {{ ansible_env.USER }}
-  set_fact: local_user={{ ansible_env.USER }}
-  when: ansible_env.USER != "root"
+- name: get the real username when not ssh
+  command: id -un
+  register: id_output
+  when: ansible_ssh_user == "root" or ansible_ssh_user is undefined
 
-- name: set USER {{ ansible_ssh_user }}
+- name: set USER via id
+  set_fact: local_user={{ id_output.stdout }}
+  when: ansible_ssh_user == "root" or ansible_ssh_user is undefined
+
+- name: set USER via ssh
   set_fact: local_user={{ ansible_ssh_user }}
   when: ansible_ssh_user != "root" and ansible_ssh_user is defined
 
