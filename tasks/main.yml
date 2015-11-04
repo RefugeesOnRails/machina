@@ -33,6 +33,18 @@
     dest=~/.rbenv
   sudo: false
 
+- name: set rbenv
+  lineinfile:
+    dest=~/.bashrc
+    regexp='{{ item.regex }}'
+    line='{{ item.line }}'
+    state=present
+    create=yes
+  with_items:
+    - {regex: '/.rbenv/bin:', line: 'export PATH="$HOME/.rbenv/bin:$PATH"'}
+    - {regex: 'rbenv init -', line: 'eval "$(rbenv init -)"'}
+  sudo: false
+
 - name: add google chrome key
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
 
@@ -47,3 +59,13 @@
 
 - name: install awscli
   pip: name=awscli
+
+- name: download atom editor
+  get_url:
+    url=https://github.com/atom/atom/releases/download/v1.1.0/atom-amd64.deb
+    dest=~/atom-amd64.deb
+    #checksum=sha256:20ae3a6ab509923e2b4ccd05d84079aa113be286a9052fecc35a31e833e77ce5
+  sudo: false
+
+- name: install atom editor
+  apt: deb=/home/{{ ansible_ssh_user }}/atom-amd64.deb
