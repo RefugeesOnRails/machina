@@ -1,5 +1,14 @@
 ---
 # tasks file for machina
+
+- name: set USER {{ ansible_env.USER }}
+  set_fact: local_user={{ ansible_env.USER }}
+  when: ansible_env.USER != "root"
+
+- name: set USER {{ ansible_ssh_user }}
+  set_fact: local_user={{ ansible_ssh_user }}
+  when: ansible_ssh_user != "root" and ansible_ssh_user is defined
+
 - name: update apt cache
   apt: update_cache=yes
 
@@ -14,6 +23,7 @@
     - python-dev
     - python-setuptools
     - python-virtualenv
+    - python-pycurl
     # ruby dependency
     - libssl-dev
     - libreadline-dev
@@ -58,15 +68,15 @@
   sudo: false
 
 - name: install ruby 2.2.3 via rbenv
-  shell: sudo -iu {{ansible_ssh_user}} rbenv install 2.2.3
+  shell: sudo -iu {{ local_user }} rbenv install 2.2.3
   args:
-    creates: /home/{{ansible_ssh_user}}/.rbenv/versions/2.2.3
+    creates: /home/{{ local_user }}/.rbenv/versions/2.2.3
 
 - name: setting ruby 2.2.3 global
-  shell: sudo -iu {{ansible_ssh_user}} rbenv global 2.2.3
+  shell: sudo -iu {{ local_user }} rbenv global 2.2.3
 
 - name: install bundler and rails gems
-  shell: sudo -iu {{ansible_ssh_user}} gem install bundler rails
+  shell: sudo -iu {{ local_user }} gem install bundler rails
 
 - name: add google chrome key
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
@@ -91,4 +101,4 @@
   sudo: false
 
 - name: install atom editor
-  apt: deb=/home/{{ ansible_ssh_user }}/atom-amd64.deb
+  apt: deb=/home/{{ local_user }}/atom-amd64.deb
