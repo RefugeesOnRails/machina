@@ -1,2 +1,34 @@
 ---
 # tasks file for machina
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: install packages
+  apt: name={{ item }} state=present
+  with_items:
+    - build-essential
+    - git
+    - postgresql
+    - redis-server
+
+# Update all packages to the latest version
+- name: Update all Packages
+  apt: upgrade=yes
+
+- name: add heroku toolbelt key
+  apt_key: url=https://toolbelt.heroku.com/apt/release.key state=present
+
+- name: add heroku toolbelt repo
+  apt_repository:
+    repo="deb http://toolbelt.heroku.com/ubuntu ./"
+    state=present
+    update_cache=yes
+
+- name: install heroku toolbelt
+  apt: name=heroku-toolbelt state=present
+
+- name: install rbenv
+  git:
+    repo=https://github.com/sstephenson/rbenv.git
+    dest=~/.rbenv
+  sudo: false
