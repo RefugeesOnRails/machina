@@ -17,7 +17,7 @@
 
 SCRIPT
 # get ansible ansible repo
-wget -O- https://github.com/RefugeesOnRails/machina/archive/master.tar.gz | tar xz -C /tmp
+wget -qO- https://github.com/RefugeesOnRails/machina/archive/master.tar.gz | tar xz -C /tmp
 
 # go into machina dir
 cd /tmp/machina-master
