@@ -37,11 +37,11 @@
     - libffi-dev # not sure?
 
 # Update all packages to the latest version
-- name: Update all Packages
+- name: Upgrade all Packages
   apt: upgrade=yes
 
 - name: add heroku toolbelt key
-  apt_key: url=https://toolbelt.heroku.com/apt/release.key state=present
+  apt_key: data="{{ lookup('file', 'release.key') }}" state=present
 
 - name: add heroku toolbelt repo
   apt_repository: repo="deb http://toolbelt.heroku.com/ubuntu ./" state=present update_cache=yes
@@ -103,6 +103,7 @@
   get_url:
     url=https://github.com/atom/atom/releases/download/v1.1.0/atom-amd64.deb
     dest=~/atom-amd64.deb
+    validate_certs=no #it's a error in ubuntu
     #checksum=sha256:20ae3a6ab509923e2b4ccd05d84079aa113be286a9052fecc35a31e833e77ce5
   sudo: false
 
