@@ -10,12 +10,13 @@ Requirements
 ------------
 
 You only need access to the Internet and a updated Ubuntu 14.04 or greater
-(add the moment only 14.04 is tested).   
+(at the moment only 14.04 is tested).   
 The machine should at least be a dual core with 2 GB Ram.
 
 Installed Software
 --------------
 
+* ansible
 * build-essential
 * git
 * postgresql

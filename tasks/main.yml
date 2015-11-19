@@ -49,6 +49,32 @@
 - name: install heroku toolbelt
   apt: name=heroku-toolbelt state=present
 
+- name: add google chrome key
+  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
+
+- name: add google chrome repo
+  apt_repository: repo="deb http://dl.google.com/linux/chrome/deb/ stable main" state=present update_cache=yes
+
+- name: install google chrome
+  apt: name=google-chrome-stable state=installed
+
+- name: install pip
+  easy_install: name=pip
+
+- name: install awscli
+  pip: name=awscli
+
+- name: download atom editor
+  get_url:
+    url=https://github.com/atom/atom/releases/download/v1.2.3/atom-amd64.deb
+    dest=~/atom-amd64.deb
+    validate_certs=no #it's a error in ubuntu
+    #checksum=sha256:20ae3a6ab509923e2b4ccd05d84079aa113be286a9052fecc35a31e833e77ce5
+  sudo: false
+
+- name: install atom editor
+  apt: deb=/home/{{ local_user }}/atom-amd64.deb
+
 - name: install rbenv
   git:
     repo=https://github.com/sstephenson/rbenv.git
@@ -83,29 +109,3 @@
 
 - name: install bundler and rails gems
   shell: sudo -iu {{ local_user }} gem install bundler rails
-
-- name: add google chrome key
-  apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
-
-- name: add google chrome repo
-  apt_repository: repo="deb http://dl.google.com/linux/chrome/deb/ stable main" state=present update_cache=yes
-
-- name: install google chrome
-  apt: name=google-chrome-stable state=installed
-
-- name: install pip
-  easy_install: name=pip
-
-- name: install awscli
-  pip: name=awscli
-
-- name: download atom editor
-  get_url:
-    url=https://github.com/atom/atom/releases/download/v1.1.0/atom-amd64.deb
-    dest=~/atom-amd64.deb
-    validate_certs=no #it's a error in ubuntu
-    #checksum=sha256:20ae3a6ab509923e2b4ccd05d84079aa113be286a9052fecc35a31e833e77ce5
-  sudo: false
-
-- name: install atom editor
-  apt: deb=/home/{{ local_user }}/atom-amd64.deb
