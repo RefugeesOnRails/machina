@@ -6,6 +6,8 @@ This is a ansible playbook to install the needed RefugeesOnRails Software on a U
 You only need to run
 `wget -qO- https://raw.githubusercontent.com/RefugeesOnRails/machina/master/install-machina.sh | sh`
 
+More information in the [wiki](https://github.com/RefugeesOnRails/machina/wiki)
+
 Requirements
 ------------
 
