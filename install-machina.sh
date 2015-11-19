@@ -20,7 +20,7 @@ SCRIPT
 wget -qO- https://github.com/RefugeesOnRails/machina/archive/master.tar.gz | tar xz -C /tmp
 
 # go into machina dir
-cd /tmp/machina-master
+cd /tmp/machina-master || exit
 
 # install playbook with ansible
 ansible-playbook -i "localhost," -c local site.yml --ask-sudo-pass

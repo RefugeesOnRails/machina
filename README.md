@@ -1,31 +1,48 @@
 machina
 =========
 
-A brief description of the role goes here.
+This is a ansible playbook to install the needed RefugeesOnRails Software on a Ubuntu 14.04
+
+You only need to run
+`wget -qO- https://raw.githubusercontent.com/RefugeesOnRails/machina/master/install-machina.sh | sh`
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+You only need access to the Internet and a updated Ubuntu 14.04 or greater
+(add the moment only 14.04 is tested).   
+The machine should at least be a dual core with 2 GB Ram.
 
-Role Variables
+Installed Software
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+* build-essential
+* git
+* postgresql
+* redis-server
+* python-dev
+* python-setuptools
+* python-virtualenv
+* python-pycurl
+* python-pip
+* rbenv
+* ruby-build
+* ruby 2.2.3 (will be build on the machine)
+* rails
+* atom editor
+* Google Chrome
+* heroku-toolbelt
+* awscli
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+No Dependencies at the moment
 
-Example Playbook
+Bugs
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+There are two workarounds because Ubuntu 14.04 doesn't ship the certificates that are needed.
 
 License
 -------
