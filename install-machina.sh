@@ -9,8 +9,8 @@
     # run inside sudo
     sudo sh <<SCRIPT
   # install latest ansible
-  apt-get install software-properties-common
-  apt-add-repository ppa:ansible/ansible
+  apt-get install -y software-properties-common
+  apt-add-repository -y ppa:ansible/ansible
 
   # update your sources
   apt-get update
