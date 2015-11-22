@@ -1,8 +1,7 @@
 # Site settings
-title: Machina, a ansible Modul
+title: Machina, an ansible playbook
 tag_text: Machina
-description: Machina is a Jekyll theme that supports single-page websites only, but supports them well. Yes, it’s responsive.
-
+description: Machina is a ansible playbook to install the needed Software for RefugeesOnRails on a Ubuntu 14.04 Desktop
 # Build settings
 markdown: kramdown
 

@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-This is a ansible playbook to install the needed RefugeesOnRails Software on a Ubuntu 14.04
+This is a ansible playbook to install the needed Software for [RefugeesOnRails](http://refugeesonrails.org/) on a Ubuntu 14.04 Desktop
 
 You only need to run   
 `wget -qO- https://raw.githubusercontent.com/RefugeesOnRails/machina/master/install-machina.sh | sh`
