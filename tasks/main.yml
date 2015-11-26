@@ -99,14 +99,11 @@
     - {regex: 'rbenv init -', line: 'eval "$(rbenv init -)"'}
   sudo: false
 
-- name: install ruby 2.2.3 ppa
+- name: install brightbox/ruby-ng ppa
   apt_repository: repo='ppa:brightbox/ruby-ng'
 
 - name: install ruby 2.2.3
   apt: name=ruby2.2 state=present
 
-- name: setting ruby 2.2.3 global
-  shell: sudo -iu {{ local_user }} rbenv global 2.2.3
-
 - name: install bundler and rails gems
-  shell: sudo -iu {{ local_user }} gem install bundler rails
+  shell: gem install bundler rails
