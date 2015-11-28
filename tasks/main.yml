@@ -30,6 +30,9 @@
     - python-setuptools
     - python-virtualenv
     - python-pycurl
+    - nodejs
+    - sqlite3
+    - libsqlite3-dev
     # ruby dependency
     - libssl-dev
     - libreadline-dev
