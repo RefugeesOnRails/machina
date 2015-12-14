@@ -38,6 +38,7 @@
     - libreadline-dev
     - zlib1g-dev
     - libffi-dev # not sure?
+    - libpq-dev # required for pg-gem
 
 # Update all packages to the latest version
 - name: Upgrade all Packages
