@@ -4,16 +4,16 @@
 - name: get the real username when not ssh
   command: id -un
   register: id_output
-  when: ansible_ssh_user == "root" or ansible_ssh_user is undefined
+  when: ansible_user == null or ansible_user is undefined
   sudo: no
 
 - name: set USER via id
   set_fact: local_user={{ id_output.stdout }}
-  when: ansible_ssh_user == "root" or ansible_ssh_user is undefined
+  when: ansible_user == null or ansible_user is undefined
 
 - name: set USER via ssh
   set_fact: local_user={{ ansible_ssh_user }}
-  when: ansible_ssh_user != "root" and ansible_ssh_user is defined
+  when: ansible_user != null and ansible_user is defined
 
 - name: update apt cache
   apt: update_cache=yes
