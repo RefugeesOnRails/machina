@@ -1,6 +1,8 @@
 machina
 =========
 
+[![Build Status](https://travis-ci.org/RefugeesOnRails/machina.svg?branch=master)](https://travis-ci.org/RefugeesOnRails/machina)
+
 This is a ansible playbook to install the needed RefugeesOnRails Software on a Ubuntu 14.04
 
 You only need to run
