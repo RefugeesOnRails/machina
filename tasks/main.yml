@@ -70,7 +70,7 @@
 
 - name: download atom editor
   get_url:
-    url=https://github.com/atom/atom/releases/download/v1.3.1/atom-amd64.deb
+    url=https://github.com/atom/atom/releases/download/v1.7.2/atom-amd64.deb
     dest=~/atom-amd64.deb
     validate_certs=no #it's a error in ubuntu
     #checksum=sha256:20ae3a6ab509923e2b4ccd05d84079aa113be286a9052fecc35a31e833e77ce5
