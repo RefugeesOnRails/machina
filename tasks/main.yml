@@ -73,7 +73,7 @@
 - name: prevent automagical adding of google repos
   file:
     path=/etc/default/google-chrome
-    state=file
+    state=touch
 
 - name: install google chrome
   apt: name=google-chrome-stable state=installed
