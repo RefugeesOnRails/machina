@@ -56,20 +56,21 @@
 - name: add google chrome key
   apt_key: url=https://dl-ssl.google.com/linux/linux_signing_key.pub state=present
 
-- name: "ensure previous repository for Google Chrome is absent, as Google removed the x86 distribution"
+# via https://github.com/cmprescott/ansible-role-chrome/blob/master/tasks/setup-apt.yml
+- name: ensure previous repository for Google Chrome is absent, as Google removed the x86 distribution
   apt_repository: repo='deb http://dl.google.com/linux/chrome/deb/ stable main' state=absent
 
-- name: "ensure Google chrome repo present, using a workaround for missing x86 distribution"
+- name: ensure Google chrome repo present, using a workaround for missing x86 distribution
   copy:
     content: "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main"
     dest: "/etc/apt/sources.list.d/google-chrome.list"
   register: google_repo
 
-- name: "apt | update cache"
+- name: update cache
   apt: update_cache=yes
   when: google_repo.changed
 
-- name: "prevent automagical adding of google repos"
+- name: prevent automagical adding of google repos
   file:
     path=/etc/default/google-chrome
     state=file
