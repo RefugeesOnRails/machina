@@ -129,3 +129,14 @@
 
 - name: install bundler and rails gems
   shell: sudo -iu {{ local_user }} gem install bundler rails
+
+- name: install node via nvm
+  shell: wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
+  sudo: false
+  args:
+    creates: /home/{{ local_user }}/.nvm
+
+- name: install version node v4
+  shell: sudo -iu {{ local_user }} bash -lic "nvm install v4 && nvm alias default v4"
+  args:
+    creates: /home/{{ local_user }}/.nvm/alias/default
