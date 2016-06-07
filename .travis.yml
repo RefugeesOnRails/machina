@@ -1,6 +1,8 @@
 ---
-language: python
-python: "2.7"
+#language: python
+#python: "2.7"
+sudo: required
+dist: trusty
 
 before_install:
   # Make sure everything's up to date.
@@ -14,4 +16,5 @@ install:
   #- "printf '[defaults]\nroles_path = ../' > ansible.cfg"
 
 script:
-  - ansible-playbook -i tests/inventory site.yml --syntax-check 
+  - ansible-playbook -i tests/inventory site.yml --syntax-check
+  - ansible-playbook -i tests/inventory site.yml
