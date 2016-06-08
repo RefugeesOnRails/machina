@@ -95,6 +95,22 @@
 - name: install atom editor
   apt: deb=/tmp/atom-amd64.deb
 
+- name: install atom linter packages
+  shell: apm install {{ item }}
+  with_items:
+    - linter
+    - linter-htmlhint
+    - linter-haml
+    - linter-csslint
+    - linter-sass-lint
+    - linter-jshint
+    - linter-ruby
+    - linter-erb
+    - linter-coffeelint
+    - linter-pylint
+    - linter-js-yaml
+  become: false
+
 - name: install rbenv
   git:
     repo=https://github.com/sstephenson/rbenv.git
