@@ -1,8 +1,6 @@
 ---
-#language: python
-#python: "2.7"
-sudo: required
-dist: trusty
+language: python
+python: "2.7"
 
 before_install:
   # Make sure everything's up to date.
@@ -17,4 +15,3 @@ install:
 
 script:
   - ansible-playbook -i tests/inventory site.yml --syntax-check
-  - ansible-playbook -i tests/inventory site.yml
