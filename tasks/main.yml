@@ -5,7 +5,7 @@
   command: id -un
   register: id_output
   when: ansible_user == null or ansible_user is undefined
-  sudo: no
+  become: no
 
 - name: set USER via id
   set_fact: local_user={{ id_output.stdout }}
@@ -22,6 +22,7 @@
   apt: name={{ item }} state=present
   with_items:
     - aptitude
+    - python-apt
     - build-essential
     - git
     - postgresql
@@ -86,26 +87,25 @@
 
 - name: download atom editor
   get_url:
-    url=https://github.com/atom/atom/releases/download/v1.7.2/atom-amd64.deb
-    dest=~/atom-amd64.deb
+    url=https://github.com/atom/atom/releases/download/v1.8.0/atom-amd64.deb
+    dest=/tmp/atom-amd64.deb
     validate_certs=no #it's a error in ubuntu
-    #checksum=sha256:20ae3a6ab509923e2b4ccd05d84079aa113be286a9052fecc35a31e833e77ce5
-  sudo: false
+    #checksum=sha256:0383cda303e910829f24a2acc13fcdcbca735c99cb44299183c93eb9d40f18f4
 
 - name: install atom editor
-  apt: deb=/home/{{ local_user }}/atom-amd64.deb
+  apt: deb=/tmp/atom-amd64.deb
 
 - name: install rbenv
   git:
     repo=https://github.com/sstephenson/rbenv.git
     dest=~/.rbenv
-  sudo: false
+  become: false
 
 - name: install ruby-build for rbenv
   git:
     repo=https://github.com/sstephenson/ruby-build.git
     dest=~/.rbenv/plugins/ruby-build
-  sudo: false
+  become: false
 
 - name: set rbenv
   lineinfile:
@@ -117,7 +117,7 @@
   with_items:
     - {regex: '/.rbenv/bin:', line: 'export PATH="$HOME/.rbenv/bin:$PATH"'}
     - {regex: 'rbenv init -', line: 'eval "$(rbenv init -)"'}
-  sudo: false
+  become: false
 
 - name: install ruby 2.3.1 via rbenv
   shell: sudo -iu {{ local_user }} rbenv install 2.3.1
@@ -132,7 +132,7 @@
 
 - name: install node via nvm
   shell: wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-  sudo: false
+  become: false
   args:
     creates: /home/{{ local_user }}/.nvm
 

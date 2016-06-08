@@ -1,6 +1,6 @@
 ---
 - hosts: all
   #remote_user: ubuntu
-  sudo: yes
+  become: true
   tasks:
   - include: tasks/main.yml
