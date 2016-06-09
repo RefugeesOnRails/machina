@@ -32,7 +32,7 @@ The computer should:
 * have Ubuntu Desktop 16.04 or 14.04 installed and updated
 * a working internet connection
 
-We recommend at least a dual-core processor and 4GB or RAM.
+We recommend at least a dual-core processor and 4GB of RAM.
 
 ### Installation
 
