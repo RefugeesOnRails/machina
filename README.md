@@ -16,10 +16,12 @@
 * python-virtualenv
 * python-pycurl
 * python-pip
+* nvm
+* node
 * rbenv
 * ruby-build
 * several dependencies for building ruby and different gems
-* ruby 2.2.3 (built locally)
+* ruby (built locally)
 * rails
 * heroku-toolbelt
 * awscli
