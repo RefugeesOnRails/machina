@@ -1,24 +1,10 @@
-machina
-=========
+# // machina
 
 [![Build Status](https://travis-ci.org/RefugeesOnRails/machina.svg?branch=master)](https://travis-ci.org/RefugeesOnRails/machina)
 
-This is a ansible playbook to install the needed RefugeesOnRails Software on a Ubuntu 14.04
+[Refugees On Rails](http://refugeesonrails.org) presents: _// machina_ – setup everything you need with one command! This ansible playbook configures a newly installed [Ubuntu Desktop](http://www.ubuntu.com/download/desktop) with the tools they need to start programming productively asap. It is maintained to run on both Ubuntu 16.04 and 14.04.
 
-You only need to run
-`wget -qO- https://raw.githubusercontent.com/RefugeesOnRails/machina/master/install-machina.sh | sh`
-
-More information in the [wiki](https://github.com/RefugeesOnRails/machina/wiki)
-
-Requirements
-------------
-
-You only need access to the Internet and a updated Ubuntu 14.04 or greater
-(at the moment only 14.04 is tested).   
-The machine should at least be a dual core with 2 GB Ram.
-
-Installed Software
---------------
+### Software included
 
 * ansible
 * build-essential
@@ -30,31 +16,44 @@ Installed Software
 * python-virtualenv
 * python-pycurl
 * python-pip
+* nvm
+* node
 * rbenv
 * ruby-build
-* ruby 2.2.3 (will be build on the machine)
+* several dependencies for building ruby and different gems
+* ruby (built locally)
 * rails
-* atom editor
-* Google Chrome
 * heroku-toolbelt
 * awscli
+* atom editor
+* google chrome
 
-Dependencies
-------------
+### Requirements
 
-No Dependencies at the moment
+The computer should:
+* have Ubuntu Desktop 16.04 or 14.04 installed and updated
+* a working internet connection
 
-Bugs
-----------------
+We recommend at least a dual-core processor and 4GB of RAM.
 
-There are two workarounds because Ubuntu 14.04 doesn't ship the certificates that are needed.
+### Installation
 
-License
--------
+Step 1: Open a terminal window (_Ctrl+Alt+T_ )   
+Step 2: Copy-paste the following command and press _Enter_
+```
+wget -qO- https://raw.githubusercontent.com/RefugeesOnRails/machina/master/install-machina.sh | sh
+```
+
+It will ask for the user's password two times. Enter it and wait until it completes. If the computer is slow, it may take up to an hour.
+
+### Problems and suggestions
+
+Please report any issues you encounter directly in the [issue tracker](https://github.com/RefugeesOnRails/machina/issues). If you would like to add other packages or have suggestions for improvements, please open an issue as well.
+
+### License
 
 MIT
 
-Author Information
-------------------
+### Special thanks
 
-sangyye ([Twitter](http://twitter.com/sangyye)/[GitHub](http://github.com/sangyye)).
+A shout-out to [sangyye](http://twitter.com/sangyye) for helping us set this up. Thanks!
