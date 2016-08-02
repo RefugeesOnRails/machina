@@ -30,6 +30,7 @@ layout: default
 ### Requirements
 
 The computer should:
+
 * have Ubuntu Desktop 16.04 or 14.04 installed and updated
 * a working internet connection
 
